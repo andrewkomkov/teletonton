@@ -73,3 +73,17 @@ def store_user(id, username, phone, first_name, last_name):
                 ,'{str(last_name).replace("'",'')}')
           ''')
     conn.commit()
+
+def create_view():
+    ''' Функция для создания представления для удобства сопоставления загруженных диалогов'''
+    c = conn.cursor()
+    c.execute(f'''
+         CREATE VIEW table_names AS 
+         SELECT d.dialog_id,d.name FROM sqlite_schema a
+         INNER JOIN  dialogs d ON a.name = d.dialog_id
+          ''')
+    conn.commit()
+
+create_table_with_dialogs()
+create_view()
+create_table_with_users()
