@@ -1,4 +1,9 @@
+import os
 import sqlite3
+try:
+      os.mkdir('../db')
+except:
+      pass
 
 conn = sqlite3.connect('../db/messages.db')
 
