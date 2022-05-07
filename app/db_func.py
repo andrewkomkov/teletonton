@@ -34,18 +34,18 @@ def create_table(name):
     c = conn.cursor()
     c.execute(f'''
           CREATE TABLE IF NOT EXISTS "{name}"
-          ([message_id] INTEGER PRIMARY KEY, [author] TEXT, [text] TEXT)
+          ([message_id] INTEGER PRIMARY KEY, [author] TEXT, [text] TEXT, [date] TEXT)
           ''')
     conn.commit()
 
 
-def store_message(table_name, message_id, author, text):
+def store_message(table_name, message_id, author, text, date):
     ''' Функция для сохранения одного сообщения в таблицу с конкретным диалогом'''
     c = conn.cursor()
     c.execute(f'''
-          INSERT INTO "{table_name}" (message_id,author,text)
+          INSERT INTO "{table_name}" (message_id,author,text, date)
                 VALUES
-                ({message_id},'{str(author).replace("'",'')}','{str(text).replace("'",'')}')
+                ({message_id},'{str(author).replace("'",'')}','{str(text).replace("'",'')}','{str(date)}')
           ''')
     conn.commit()
 
