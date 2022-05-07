@@ -1,11 +1,11 @@
 import os
 import sqlite3
 try:
-      os.mkdir('../db')
+      os.mkdir(r'../db')
 except:
       pass
 
-conn = sqlite3.connect('../db/messages.db')
+conn = sqlite3.connect(r'../db/messages.db')
 
 
 def create_table_with_dialogs():
