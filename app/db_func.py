@@ -78,7 +78,7 @@ def create_view():
     ''' Функция для создания представления для удобства сопоставления загруженных диалогов'''
     c = conn.cursor()
     c.execute(f'''
-         CREATE VIEW table_names AS 
+         CREATE VIEW IF NOT EXISTS table_names AS 
          SELECT d.dialog_id,d.name FROM sqlite_schema a
          INNER JOIN  dialogs d ON a.name = d.dialog_id
           ''')
